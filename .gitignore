@@ -1,4 +1,4 @@
 .gradle
-LegacyTextMungerUI.iml
-LegacyTextMungerUI.ipr
-LegacyTextMungerUI.iws
+*.iml
+*.ipr
+*.iws
