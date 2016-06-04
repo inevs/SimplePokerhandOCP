@@ -33,7 +33,7 @@ public class Card implements Comparable<Card> {
 		return rank1.compareTo(rank2);
 	}
 
-	private Integer getRank() {
+	public Integer getRank() {
 		String rankString = value.substring(1);
 		int rank = 0;
 		switch (rankString) {
@@ -60,5 +60,13 @@ public class Card implements Comparable<Card> {
 	@Override
 	public int hashCode() {
 		return value != null ? value.hashCode() : 0;
+	}
+
+	public static String formatToString(List<Card> cards) {
+		List<String> cardStrings = new ArrayList<>();
+		for (Card card : cards) {
+			cardStrings.add(card.toString());
+		}
+		return String.join(" ", cardStrings);
 	}
 }

@@ -31,7 +31,6 @@ public class PokerhandEvaluatorTest {
 	}
 
 	@Test
-	@Ignore
 	public void findsPairOutOfTwo() throws Exception {
 		assertThat(evaluator.evaluate("C4 H4"), equalTo("C4 H4"));
 	}
