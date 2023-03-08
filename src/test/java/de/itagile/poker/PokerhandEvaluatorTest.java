@@ -9,32 +9,22 @@ public class PokerhandEvaluatorTest {
     SimplePokerhandEvaluator evaluator = new SimplePokerhandEvaluator();
 
     @Test
-    public void findsHighcardOutOfTwo() throws Exception {
-        assertThat(evaluator.evaluate("C2 C3"), equalTo("HighCard: Three"));
-        assertThat(evaluator.evaluate("C2 C4"), equalTo("HighCard: Four"));
-        assertThat(evaluator.evaluate("C4 C2"), equalTo("HighCard: Four"));
+    public void findsHighcardInHand() {
+        assertThat(evaluator.evaluate("C2 C3 S4 D5 S6"), equalTo("HighCard: Six"));
+        assertThat(evaluator.evaluate("S6 C2 C4 D5 C3"), equalTo("HighCard: Six"));
     }
 
     @Test
-    public void findsHighcardWith10() throws Exception {
-        assertThat(evaluator.evaluate("C4 C10"), equalTo("HighCard: Ten"));
+    public void findsHighcardWithFaceCards() {
+        assertThat(evaluator.evaluate("C10 CJ C2 C3 S4"), equalTo("HighCard: Jack"));
+        assertThat(evaluator.evaluate("CJ CQ C2 C3 S4"), equalTo("HighCard: Queen"));
+        assertThat(evaluator.evaluate("CQ CK C2 C3 S4"), equalTo("HighCard: King"));
+        assertThat(evaluator.evaluate("CK CA C2 C3 S4"), equalTo("HighCard: Ace"));
     }
 
     @Test
-    void findHighcardIgnoringColor() {
-        assertThat(evaluator.evaluate("C4 H3"), equalTo("HighCard: Four"));
-    }
-
-    @Test
-    public void findsHighcardWithFaceCards() throws Exception {
-        assertThat(evaluator.evaluate("C10 CJ"), equalTo("HighCard: Jack"));
-        assertThat(evaluator.evaluate("CJ CQ"), equalTo("HighCard: Queen"));
-        assertThat(evaluator.evaluate("CQ CK"), equalTo("HighCard: King"));
-        assertThat(evaluator.evaluate("CK CA"), equalTo("HighCard: Ace"));
-    }
-
-    @Test
-    public void findsPairOutOfTwo() throws Exception {
-        assertThat(evaluator.evaluate("C4 H4"), equalTo("Pair: Four's"));
+    public void findsPairInHand() {
+        assertThat(evaluator.evaluate("C4 H4 C2 C3 S5"), equalTo("Pair: Four's"));
+        assertThat(evaluator.evaluate("DQ SQ C2 C3 S4"), equalTo("Pair: Queen's"));
     }
 }
