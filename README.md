@@ -8,7 +8,7 @@ It should just evaluate a Pokerhand and decide which cards to be used to assess 
 ## Problem Description
 Your job is to compare several poker hands and to indicate the poker rank.
 
-The PokerhandEvaluator currently finds Highcards and Pairs. Before you implement the nex rule, refactor it to conform to the [OCP](https://en.wikipedia.org/wiki/Open–closed_principle).
+The PokerhandEvaluator currently finds Highcards and Pairs. Before you implement the next rule, refactor it to conform to the [OCP](https://en.wikipedia.org/wiki/Open–closed_principle).
 
 ## Poker rules description
 
