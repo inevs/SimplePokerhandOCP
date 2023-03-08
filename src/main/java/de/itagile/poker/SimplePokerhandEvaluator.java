@@ -1,6 +1,7 @@
 package de.itagile.poker;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class SimplePokerhandEvaluator {
     public String evaluate(String hand) {
@@ -9,10 +10,10 @@ public class SimplePokerhandEvaluator {
 
         List<Card> foundCards = findPair(cards);
         if (!foundCards.isEmpty()) {
-            result = Card.formatToString(foundCards);
+            result = "Pair: " + foundCards.get(0).toString() + "'s";
         } else {
             Card highCard = findHighCard(cards);
-            result = highCard.toString();
+            result = "HighCard: " + highCard.toString();
         }
         return result;
     }

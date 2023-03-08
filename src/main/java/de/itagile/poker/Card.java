@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Card implements Comparable<Card> {
+    private static List<String> rankNames = Arrays.asList("Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace");
     private String value;
 
     public Card(String value) {
@@ -19,7 +20,7 @@ public class Card implements Comparable<Card> {
 
     @Override
     public String toString() {
-        return value;
+        return rankNames.get(getRank()-2);
     }
 
     @Override

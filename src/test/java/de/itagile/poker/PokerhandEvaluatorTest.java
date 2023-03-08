@@ -10,26 +10,31 @@ public class PokerhandEvaluatorTest {
 
     @Test
     public void findsHighcardOutOfTwo() throws Exception {
-        assertThat(evaluator.evaluate("C2 C3"), equalTo("C3"));
-        assertThat(evaluator.evaluate("C2 C4"), equalTo("C4"));
-        assertThat(evaluator.evaluate("C4 C2"), equalTo("C4"));
+        assertThat(evaluator.evaluate("C2 C3"), equalTo("HighCard: Three"));
+        assertThat(evaluator.evaluate("C2 C4"), equalTo("HighCard: Four"));
+        assertThat(evaluator.evaluate("C4 C2"), equalTo("HighCard: Four"));
     }
 
     @Test
     public void findsHighcardWith10() throws Exception {
-        assertThat(evaluator.evaluate("C4 C10"), equalTo("C10"));
+        assertThat(evaluator.evaluate("C4 C10"), equalTo("HighCard: Ten"));
+    }
+
+    @Test
+    void findHighcardIgnoringColor() {
+        assertThat(evaluator.evaluate("C4 H3"), equalTo("HighCard: Four"));
     }
 
     @Test
     public void findsHighcardWithFaceCards() throws Exception {
-        assertThat(evaluator.evaluate("C10 CJ"), equalTo("CJ"));
-        assertThat(evaluator.evaluate("CJ CQ"), equalTo("CQ"));
-        assertThat(evaluator.evaluate("CQ CK"), equalTo("CK"));
-        assertThat(evaluator.evaluate("CK CA"), equalTo("CA"));
+        assertThat(evaluator.evaluate("C10 CJ"), equalTo("HighCard: Jack"));
+        assertThat(evaluator.evaluate("CJ CQ"), equalTo("HighCard: Queen"));
+        assertThat(evaluator.evaluate("CQ CK"), equalTo("HighCard: King"));
+        assertThat(evaluator.evaluate("CK CA"), equalTo("HighCard: Ace"));
     }
 
     @Test
     public void findsPairOutOfTwo() throws Exception {
-        assertThat(evaluator.evaluate("C4 H4"), equalTo("C4 H4"));
+        assertThat(evaluator.evaluate("C4 H4"), equalTo("Pair: Four's"));
     }
 }
