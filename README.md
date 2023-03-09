@@ -9,7 +9,7 @@ It should just evaluate a Pokerhand and decide which cards to be used to assess 
 Your job is to compare several poker hands and to indicate the poker rank.
 
 The PokerhandEvaluator currently finds Highcards and Pairs. How would you implement the next rule for _Three of a Kind_ (related test is disabled)?
-Maybe you should refactor to conform to the [OCP](https://en.wikipedia.org/wiki/Open–closed_principle) before?
+Maybe you should refactor to conform to the [OCP](https://en.wikipedia.org/wiki/Open–closed_principle) first?
 
 ## Poker rules description
 
