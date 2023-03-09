@@ -2,30 +2,29 @@
 
 ## About this Kata
 
-This Kata is derived from the [Pokerhands Kata](https://codingdojo.org/kata/PokerHands/).
-It should just evaluate a Pokerhand and decide which cards to be used to assess the value of the hand.
+Diese Kata ist abgeleitet aus der [Pokerhands Kata](https://codingdojo.org/kata/PokerHands/). Das Ziel hier ist lediglich eine Pokerhand aus 5 Karten nach den Pokerregeln zu bewerten.
+In diesem Fall handelt es sich um eine Refactoring-Übung, um verschiedene Designprinzipien zu erlernen. 
 
 ## Problem Description
-Your job is to compare several poker hands and to indicate the poker rank.
+Deine Aufgabe ist es, verschiedene Pokerhände zu bewerten und zu ermitteln, welche Regel hier zutrifft.
 
-The PokerhandEvaluator currently finds Highcards and Pairs. How would you implement the next rule for _Three of a Kind_ (related test is disabled)?
-Maybe you should refactor to conform to the [OCP](https://en.wikipedia.org/wiki/Open–closed_principle) before?
+Die aktuelle Implementierung findet die höchste Karte und Paare. Wie würdest du die nächste Regel "Drilling" implementieren (der entsprechende Test ist deaktiviert)?
+Es wäre gut, den Code vorher umzubauen, sodass er dem [OCP](https://de.wikipedia.org/wiki/Open-Closed-Prinzip) entspricht.
 
-## Poker rules description
+## Poker Rules description
 
-A poker deck contains 52 cards - each card has a suit which is one of clubs, diamonds, hearts, or spades (denoted C, D, H, and S in the input data). Each card also has a value which is one of 2, 3, 4, 5, 6, 7, 8, 9, 10, jack, queen, king, ace (denoted 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A). For scoring purposes, the suits are unordered while the values are ordered as given above, with 2 being the lowest and ace the highest value.
+Ein Pokerspiel besteht aus 52 Karten - jede Karte hat eine Farbe nämlich Kreuz, Karo, Herz oder Pik (in den Eingabedaten mit C, D, H und S bezeichnet - Clubs, Diamonds, Hearts und Spades). Jede Karte hat außerdem einen Wert, nämlich 2, 3, 4, 5, 6, 7, 8, 9, 10, Bube, Dame, König, Ass (bezeichnet als 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A). Für die Punktevergabe sind die Farben ungeordnet, während die Werte wie oben angegeben geordnet sind, wobei die 2 der niedrigste und das Ass der höchste Wert ist.
+Eine Pokerhand besteht aus 5 Karten, die aus dem Deck ausgeteilt werden. Pokerhände werden in der folgenden Reihenfolge von der niedrigsten bis zur höchsten Karte gewertet.
 
-A poker hand consists of 5 cards dealt from the deck. Poker hands are ranked by the following partial order from lowest to highest.
-
-  * **High Card**: Hands which do not fit any higher category are ranked by the value of their highest card. If the highest cards have the same value, the hands are ranked by the next highest, and so on.
-  * **Pair**: 2 of the 5 cards in the hand have the same value. Hands which both contain a pair are ranked by the value of the cards forming the pair. If these values are the same, the hands are ranked by the values of the cards not forming the pair, in decreasing order.
-  * **Two Pairs**: The hand contains 2 different pairs. Hands which both contain 2 pairs are ranked by the value of their highest pair. Hands with the same highest pair are ranked by the value of their other pair. If these values are the same the hands are ranked by the value of the remaining card.
-  * **Three of a Kind**: Three of the cards in the hand have the same value. Hands which both contain three of a kind are ranked by the value of the 3 cards.
-  * **Straight**: Hand contains 5 cards with consecutive values. Hands which both contain a straight are ranked by their highest card.
-  * **Flush**: Hand contains 5 cards of the same suit. Hands which are both flushes are ranked using the rules for High Card.
-  * **Full House**: 3 cards of the same value, with the remaining 2 cards forming a pair. Ranked by the value of the 3 cards.
-  * **Four of a kind**: 4 cards with the same value. Ranked by the value of the 4 cards.
-  * **Straight flush**: 5 cards of the same suit with consecutive values. Ranked by the highest card in the hand.
+* **HighCard**: Hände, die in keine höhere Kategorie passen, werden nach dem Wert ihrer höchsten Karte gereiht.
+* **Paar**: 2 der 5 Karten der Hand haben den gleichen Wert.
+  **Zwei Paare**: Das Blatt enthält 2 verschiedene Paare.
+* **Drilling**: Drei der Karten haben den gleichen Wert.
+* **Strasse**: Das Blatt enthält 5 Karten mit aufeinanderfolgenden Werten.
+* **Flush**: Das Blatt enthält 5 Karten der gleichen Farbe.
+  **Full House**: 3 Karten desselben Werts, wobei die verbleibenden 2 Karten ein Paar bilden.
+* **Vierling**: 4 Karten mit demselben Wert.
+* **Straight Flush**: 5 Karten der gleichen Farbe mit aufeinanderfolgenden Werten.
 
 ## Suggested Test Cases
 
