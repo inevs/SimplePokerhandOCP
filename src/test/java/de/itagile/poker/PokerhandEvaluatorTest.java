@@ -1,5 +1,6 @@
 package de.itagile.poker;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -26,5 +27,11 @@ public class PokerhandEvaluatorTest {
     public void findsPairInHand() {
         assertThat(evaluator.evaluate("C4 H4 C2 C3 S5"), equalTo("Pair: Four's"));
         assertThat(evaluator.evaluate("DQ SQ C2 C3 S4"), equalTo("Pair: Queen's"));
+    }
+
+    @Disabled("Shouldn't you refactor first?")
+    @Test
+    void findsThreeOfAKind() {
+        assertThat(evaluator.evaluate("C4 H4 D4 C2 S3"), equalTo("Three of a Kind: Fours's"));
     }
 }
