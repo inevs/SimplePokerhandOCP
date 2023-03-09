@@ -25,10 +25,4 @@ public class CardTest {
         assertThat(new Card("C4"), greaterThan(new Card("C3")));
         assertThat(new Card("CA"), greaterThan(new Card("CJ")));
     }
-
-//    @Test
-//    public void formatsCardsToString() {
-//        List<Card> cards = Card.fromHand("C2 C3");
-//        assertThat(Card.formatToString(cards), equalTo("C2 C3"));
-//    }
 }
