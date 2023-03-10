@@ -1,26 +1,24 @@
 package de.itagile.poker;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class SimplePokerhandEvaluator {
     public String evaluate(String hand) {
         List<Card> cards = Card.fromHand(hand);
-        String result;
-
-        List<Card> foundCards = findPair(cards);
-        if (!foundCards.isEmpty()) {
-            result = "Pair: " + foundCards.get(0).toString() + "'s";
-        } else {
-            Card highCard = findHighCard(cards);
-            result = "HighCard: " + highCard.toString();
+        String result = findPair(cards);
+        if (result.isBlank()) {
+            result = findHighCard(cards);
         }
         return result;
     }
 
-    private List<Card> findPair(List<Card> cards) {
+    private String findPair(List<Card> cards) {
         Map<Integer, List<Card>> rankHistogram = makeRankHistogram(cards);
-        return findPairInHistogram(rankHistogram);
+        List<Card> foundCards = findPairInHistogram(rankHistogram);
+        if (!foundCards.isEmpty()) {
+            return "Pair: " + foundCards.get(0).toString() + "'s";
+        }
+        return "";
     }
 
     private List<Card> findPairInHistogram(Map<Integer, List<Card>> rankHistogram) {
@@ -47,8 +45,9 @@ public class SimplePokerhandEvaluator {
         return histogram;
     }
 
-    private Card findHighCard(List<Card> cards) {
+    private String findHighCard(List<Card> cards) {
         Collections.sort(cards);
-        return cards.get(cards.size() - 1);
+        Card highCard = cards.get(cards.size() - 1);
+        return "HighCard: " + highCard.toString();
     }
 }
