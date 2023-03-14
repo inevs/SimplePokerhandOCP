@@ -29,7 +29,6 @@ public class PokerhandEvaluatorTest {
         assertThat(evaluator.evaluate("DQ SQ C2 C3 S4"), equalTo("Pair: Queen's"));
     }
 
-    @Disabled("Shouldn't you refactor first?")
     @Test
     void findsThreeOfAKind() {
         assertThat(evaluator.evaluate("C4 H4 D4 C2 S3"), equalTo("Three of a Kind: Four's"));
